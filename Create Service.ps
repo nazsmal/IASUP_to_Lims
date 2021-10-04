@@ -1,0 +1,4 @@
+$acl = Get-Acl "C:\IASUP_to_Lims\IASUP_to_Lims\bin\Release\net5.0\IASUP_to_Lims.exe"
+$aclRuleArgs = "{DOMAIN OR COMPUTER NAME\USER}", "Read,Write,ReadAndExecute", "ContainerInherit,ObjectInherit", "None", "Allow"
+$acl | Set-Acl "C:\IASUP_to_Lims\IASUP_to_Lims\bin\Release\net5.0\IASUP_to_Lims.exe"
+New-Service -Name Greenatom.Lims.IASUP_to_Lims -BinaryPathName "C:\IASUP_to_Lims\IASUP_to_Lims\bin\Release\net5.0\IASUP_to_Lims.exe" -Description "Служба автоматического импорта из IASUP в LIMS" -DisplayName "Greenatom.Lims.IASUP_to_Lims" -StartupType Automatic
